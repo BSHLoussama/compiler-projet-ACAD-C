@@ -1,0 +1,32 @@
+    SymbolInfo *currentSymbol, *prevSymbol;
+    int i;
+    printf("Hiding scope \'%d\':\n", cur_scope);
+
+    /* Iterate through all the buckets in the hash table */
+    for (i = 0; i < MAX_LENGTH; i++) {
+        currentSymbol = idf_table[i];
+        prevSymbol = NULL;
+
+        /* Traverse the linked list in the current bucket */
+        while (currentSymbol != NULL) {
+            /* Check if the symbol is from the current scope */
+            if (currentSymbol->scope == cur_scope) {
+                printf("Hiding %s..\n", currentSymbol->smb_name);
+
+                /* Remove the symbol from the linked list */
+                if (prevSymbol == NULL) {
+                    /* If it's the first node in the list */
+                    idf_table[i] = currentSymbol->next;
+                } else {
+                    prevSymbol->next = currentSymbol->next;
+                }
+
+                /* Free the memory occupied by the symbol */
+                free(currentSymbol);
+                currentSymbol = prevSymbol;
+            }
+
+            prevSymbol = currentSymbol;
+            currentSymbol = currentSymbol->next;
+        }
+    }

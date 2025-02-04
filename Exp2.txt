@@ -1,0 +1,103 @@
+INTEGER ROUTINE Comp (INTEGER X,REAL Y,LOGICAL Z)
+% Declarations
+
+INTEGER A = 3, B, E = 15;  
+%INTEGER D = 15.7;
+%INTEGER B;   %double dec
+REAL Z=10.0, T= 555.87, G = 34.15; 
+%cmp type 
+REAL H = 15;
+
+
+INTEGER var4 DIMENSION (30); 
+CHARACTER C*20; 
+REAL MAT DIMENSION (10, 200);
+LOGICAL D;
+
+% Instructions
+%I = 10;
+%A = Z + (T * 5);                  %decommenter pour tester les detection des erreurs
+%A = A + 13.5;
+%B = Z / 0;
+%A = A+I;
+
+B = 50;
+C = "L3";
+%C = TRUE;
+D = TRUE;
+T = MAT(9,5);
+T = var4 (2);
+%var4(12) = 4.6;
+%var4(-4) = 4;
+
+
+WRITE ("Donner la valeur de D :"); 
+READ (D);
+WRITE ("La Valeur de A est ",D , ".");
+
+WRITE ("Donner la valeur de T:"); 
+READ (T);
+WRITE ("La Valeur de T est ", T, ".");
+
+
+%IF(J.LT.10)  THEN A = A - B ;
+
+
+
+IF(A.GE.10)  THEN
+	A = A - B ;
+	DOWHILE ( B.LT.10 ) 
+		A = 20 + 1;  
+	ENDDO;
+ELSE
+	A = A + B; 
+	C = "L2";
+ENDIF
+
+IF((A.GT.(B+1)).OR.(D.EQ.TRUE))  
+THEN B = 32 - B ;
+ELSE
+A = 6;
+
+ENDIF
+
+DOWHILE ( B.LT.10 ) A = 38 + 1;  
+ENDDO;
+
+%comp = A;       %decommenter un seul cas et garder les autres commentes pour bien illustrer  
+%Comp = Z;		%les differents cas
+%Comp = A;
+Comp = 5*3 + 2;
+ENDR
+
+
+
+
+PROGRAM HelloAcad
+% Declarations
+INTEGER A,B,C ; 
+REAL Y ; 
+LOGICAL D;
+INTEGER TAB DIMENSION (10) ; 
+
+% Instructions
+B = 30;
+%TAB(11) = B + (B * 7);
+TAB(9) = B + (B * 7);
+
+%B = B / 0;
+A = CALL Comp (A,Y,D);
+C = 22+10*B;
+
+%A = CALL Comp (Y,B,C);
+%A = CALL Comp (A,B);
+
+
+
+
+END
+
+
+
+
+
